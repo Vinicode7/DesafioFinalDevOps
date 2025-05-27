@@ -1,0 +1,31 @@
+name: Gerar Relatório
+
+on:
+  workflow_dispatch:
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar o repositório
+      uses: actions/checkout@v3
+
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Instalar dependências
+      run: |
+        pip install -r requirements.txt
+
+    - name: Executar script de geração de relatório
+      run: |
+        python relatorio.py
+
+    - name: Upload do relatório gerado
+      uses: actions/upload-artifact@v4
+      with:
+        name: relatorio-gerado
+        path: relatorios/relatorio.xlsx
