@@ -28,7 +28,7 @@ jobs:
     - name: Rodar container em background
       run: docker compose run api python -m unittest discover Devops/lab_api/
 
-    Deploy:
+    deploy:
       runs-on: ubuntu-latest
       needs: test 
       
