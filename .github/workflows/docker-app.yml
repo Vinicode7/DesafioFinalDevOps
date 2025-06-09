@@ -28,4 +28,10 @@ jobs:
     - name: Rodar container em background
       run: docker compose run api python -m unittest discover Devops/lab_api/
 
-    
+    Deploy:
+      runs-on: ubuntu-latest
+      needs: test 
+      
+      steps:
+      - name: DEPLOY
+        run: curl -x POST https://api.render.com/deploy/srv-d1347v49c44c738t3bq0?key=bdT0RZoeqL4
