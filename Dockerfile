@@ -1,5 +1,7 @@
 # Usa uma imagem leve do Python
-FROM python:3.9-slim
+FROM python:3.9-slim 
+
+RUN python -m pip install --upgrade pip
 
 # Define o diretório de trabalho dentro do container
 WORKDIR /app
