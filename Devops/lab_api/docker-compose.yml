@@ -9,9 +9,3 @@ services:
       - .:/app
     environment:
       - FLASK_ENV=development
-
-  test:
-    build: .
-    command: python -m unittest discover
-    volumes:
-      - .:/app
