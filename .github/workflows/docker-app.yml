@@ -25,18 +25,7 @@ jobs:
     - name: Checkout do código
       uses: actions/checkout@v3
 
-    - name: Build da imagem (de novo para testar)
-      run: docker build -t minha-api ./lab_api
-
     - name: Rodar container em background
-      run: docker run -d -p 1313:1313 --name minha-api-container minha-api
+      run: docker-compose run api python -m unittest discover ./Devops/lab_api
 
-    - name: Esperar API subir
-      run: sleep 5
-
-    - name: Testar endpoint (exemplo com curl)
-      run: |
-        curl --fail http://localhost:1313 || exit 1
-
-    - name: Parar o container
-      run: docker stop minha-api-container
+    
